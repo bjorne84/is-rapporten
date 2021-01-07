@@ -6,6 +6,9 @@ const path = require("path");
 const mongoose = require("mongoose");
 //const { MONGO_URI } = require('./config');
 
+// atlas fBfHdE2hLbu7WNz
+//mongodb+srv://bjorn:<password>@icecluster.fr0sf.mongodb.net/<dbname>?retryWrites=true&w=majority
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -23,9 +26,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-const courseRoutes = require("./routes/courses.js");
-app.use("/courses", courseRoutes);
+const postRoutes = require("./routes/api/posts.js");
+//allting som går till api/posts sätts till postRoutes
+app.use("/api/posts", postRoutes);
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server run at port ${PORT}`));
+app.listen(port, () => console.log(`Server run at port ${port}`));
